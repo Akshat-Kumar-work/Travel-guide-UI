@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Tours from "./components/Tours";
+import data from "./data";
+import { useState } from "react";
 
 function App() {
+
+  const [tours,setTours] = useState(data);
+
+  function removeTourHandler(id){
+   // purane wale object m se hum unko newTour vale object m dalnge jinki id match nahi hogi 
+      const newTour = tours.filter(tour => tour.id!==id);
+      setTours(newTour);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+    <Tours
+          tours={tours} removeTour = {removeTourHandler}>
+    </Tours>
+    
+   </div>
   );
 }
 
