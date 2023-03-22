@@ -1,25 +1,28 @@
+
 import Card from "./Card";
 function Tours({tours,removeTour}){
     return(
-        <div>
+        <div className="container">
 
         {/* heading container */}
         <div>
-        <h2>Plan with Us</h2>
+        <h2 className='title'>Plan with Us</h2>
         </div>
             
             {/* card container */}
-            <div>
+            <div className='cards'>
                {
-                    tours.map( (tour)=>{ {/* har ek single tourselement ki value k lie card return kardo */}
+                    tours.map( (tour)=>{ {/* har ek single tours element ki value k lie card return kardo */}
                 {/* cloning tour element by using spread operator */}
-                    return <Card {...tour} removeTour={removeTour}></Card> 
+                    return <Card  key={tour.id} {...tour} removeTour={removeTour}></Card> 
+                    {/* always make key while using map function */}
                 } )
                }
             </div>
+            
 
         </div>
-        
+    
 
     );
 }

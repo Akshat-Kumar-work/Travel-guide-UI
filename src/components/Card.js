@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function Card(props){
+
     const[readMore , setReadmore] = useState(false);
 
     // click karne par readmore true hai toh usko false krdo aur agar readmore false hai toh usko true krdo
@@ -8,38 +9,39 @@ function Card(props){
         setReadmore(!readMore);
     }
     
+    //readmore agar true hai toh adhi info dikhao
     const description =  readMore ? props.info :`${props.info.substring(0,200)}....` // props.info.substring(0,200);
 
    
     return(
         
 // card container
-<div>
+<div className="card">
 
 
-            <img src={props.image} ></img>
+            <img src={props.image} className="image"></img>
 
 {/* tour info */}
-<div>
+<div className="tour-info">
             {/* tour details */}
-            <div>
-                <h4>{props.price}</h4>
-                <h4>{props.name}</h4>
+            <div className="tour-details">
+                <h4 className="tour-price">{props.price}</h4>
+                <h4 className="tour-name">{props.name}</h4>
             </div>
 
 
             {/* tour description */}
-            <div>
+            <div className="description">
             {description}
-            <span onClick={readMoreHandler}>
+            <span className="read-more" onClick={readMoreHandler}>
             {/* agar readMore ki value true hai toh show less dikhao agr flase hai toh read more dikhao */}
-            {readMore ? `show less` : `read more`}
+            {readMore ? `show less` : "read more"}
             </span>
             </div>
 </div>
 
-
-            <button onClick={ ()=> props.removeTour(props.id)}>
+{/* yaha par card components sy app components m value pass hui hai id vali */}
+            <button className="btn-red" onClick={ ()=> props.removeTour(props.id)}> 
             Not Interested
             </button>
 
