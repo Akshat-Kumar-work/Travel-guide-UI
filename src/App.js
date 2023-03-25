@@ -10,7 +10,7 @@ function App() {
 
   function removeTourHandler(id){
    // purane wale object m se hum data ko newTour vale object m dalnge jinki id match nahi hogi 
-      const newTour = tours.filter(tour => tour.id!==id);
+      const newTour = tours.filter(tour => { return tour.id!==id }  ) 
       setTours(newTour);
   }
 
